@@ -10,7 +10,7 @@ password = os.environ.get('SQL_PASSWORD')
 
 database_name = 'trivia'
 database_path = 'postgresql://{}:{}@{}/{}'.format(user, password, 'localhost:5432', database_name)
-print(database_path)
+
 db = SQLAlchemy()
 
 """
@@ -23,6 +23,7 @@ def setup_db(app, database_path=database_path):
     db.app = app
     db.init_app(app)
     db.create_all()
+    app.db = db
 
 """
 Question
